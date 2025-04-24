@@ -1,0 +1,417 @@
+
+!
+! Last configuration change at 10:28:01 UTC Fri Mar 21 2025 by student
+!
+version 17.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+! Call-home is enabled by Smart-Licensing.
+service call-home
+platform punt-keepalive disable-kernel-core
+!
+hostname LAB-RA07-A02-SW01
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 9 $9$J7vBdVVJgsNPiE$6UEhrgS96Em49XxU/2xJDtcRkvSVR477HD95W6C9//U
+!
+!
+!
+!
+no aaa new-model
+switch 1 provision c9200l-24t-4g
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name data.labnet.local
+!
+!
+!
+login on-success log
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-1181809509
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1181809509
+ revocation-check none
+ rsakeypair TP-self-signed-1181809509
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-1181809509
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31313831 38303935 3039301E 170D3235 30333231 30373535 
+  35355A17 0D333530 33323130 37353535 355A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 31383138 
+  30393530 39308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 010097B6 532AAF74 DC8675A2 068D2714 7E5F60C0 381D6F34 7C25D853 
+  FF60B99A 8E8EE93C 8F217139 70D60011 089601ED BCD24BC8 0E9B1E0F 697DEE2B 
+  C29A3466 DEF04E6F FDBA2407 B991DD88 F016AFBD 8C51D1FB 8E34F9BD C7D74A53 
+  8E00C560 AF30D259 E124DA21 73EA1B46 7F851730 06BCD4D4 D4052DFA 20D0A36C 
+  58E9A5F8 C2227C91 58F0E149 17ED9F6E 88DD9424 1F41894D B6705B53 C04F834F 
+  3B6AD5B8 374DB989 B9B005EC 86A39A08 7489F26D CE07CE0D BF90032B 421335D9 
+  749AEEAF 6B376C35 F6762DB1 74A9D506 20535C88 236AF094 18F54F74 7F62933A 
+  8E8721FE 7DD64CEF 8B5E01BA 6AF38239 F0EF8CA2 F9908E18 1405879D F6D7A3B8 
+  2750B063 BDF90203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 141D0E70 3A437AE3 44181D84 0451E5E1 FB1B7E84 
+  D6301D06 03551D0E 04160414 1D0E703A 437AE344 181D8404 51E5E1FB 1B7E84D6 
+  300D0609 2A864886 F70D0101 05050003 82010100 80532E4B E1FECDB0 E6CF7035 
+  C4732A57 7ABA6382 D102994F E378C659 F5A95EB7 80E027FC 2C6CFF86 AB2F72F3 
+  6D2264F0 743475EE 5C007A0F BEF85B4E 8275186A 41CDC4B7 E7CAB304 CC268441 
+  141063D6 1C742C73 BCEA5C3B 99A0A3C0 0C405DD0 96067AEF BB803E75 E6DBA259 
+  1D404CCF 75B2CCB2 6EF3039A E39D434B 2BD22E90 56CA8380 7CBA3934 01659F25 
+  DD82E1C4 46FAB907 55BBD3C3 C7212E41 0C0F2FB6 F0D046FB 6DD7A4A7 722C88D0 
+  777260BA 60140D2F 0733B9CA 1D68F704 92B68122 B27BCD0A E5AF9871 354279D8 
+  8FE05323 C1F24EA1 7A52E107 BB3376C7 E65815BE F3BBE0B3 15F423B0 134BD3E4 
+  ED1E47D0 79E16FAC 7720084E 3BA46F8F 22E37C03
+  	quit
+!
+license boot level network-essentials addon dna-essentials
+!
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 75-78,99 priority 24576
+memory free low-watermark processor 10633
+!
+username guardian privilege 15 secret 9 $9$vMJuD9efzNXbQk$93r0FT92sqsHBnJrMsRx2j3XRQI5fylDn1oOTg07qSo
+username lector privilege 15 secret 9 $9$56vxkInVTox3FE$dBQRYm9yhG7tqKuwhrOHlDXE1.RkBE5Xai6rVSSu6tI
+username student secret 9 $9$eXT6v5ijZ8TpO.$YeZucqUA1XQtf7CkZpUs6NgnSpcYby5/ru11KiRMzQA
+!
+redundancy
+ mode sso
+!
+!
+transceiver type all
+ monitoring
+!
+!
+class-map match-any system-cpp-police-ewlc-control
+  description EWLC Control 
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data packets, LOGGING, Transit Traffic
+class-map match-any system-cpp-default
+  description EWLC data, Inter FED Traffic 
+class-map match-any system-cpp-police-sys-data
+  description Openflow, Exception, EGR Exception, NFL Sampled Data, RPF Failed
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-high-rate-app
+  description High Rate Applications 
+class-map match-any system-cpp-police-multicast
+  description MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual OOB
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control and Low Latency
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any system-cpp-police-dhcp-snooping
+  description DHCP snooping
+class-map match-any system-cpp-police-ios-routing
+  description L2 control, Topology control, Routing control, Low Latency
+class-map match-any system-cpp-police-system-critical
+  description System Critical and Gold Pkt
+class-map match-any system-cpp-police-ios-feature
+  description ICMPGEN,BROADCAST,ICMP,L2LVXCntrl,ProtoSnoop,PuntWebauth,MCASTData,Transit,DOT1XAuth,Swfwd,LOGGING,L2LVXData,ForusTraffic,ForusARP,McastEndStn,Openflow,Exception,EGRExcption,NflSampled,RpfFailed
+!
+policy-map system-cpp-policy
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 75-78
+ switchport mode trunk
+!
+interface Port-channel2
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 75-78
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+ switchport trunk allowed vlan 75-78
+!
+interface GigabitEthernet1/0/21
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 75-78
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/22
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 75-78
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/23
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 75-78
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0/24
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 75-78
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan75
+ ip address 172.17.7.68 255.255.255.240
+!
+interface Vlan76
+ no ip address
+!
+ip forward-protocol nd
+ip http server
+ip http secure-server
+ip ssh version 2
+!
+!
+!
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+!
+line con 0
+ password console
+ login
+ stopbits 1
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+!
+!
+!
+!
+event manager session cli username "guardian" privilege 15
+event manager applet eem-labnet-prevention-script1
+ event cli pattern "ignore_startupconfig" sync no skip yes
+ action 1.0 puts "ignore startup configuration on next reboot"
+ action 1.1 syslog msg "ignore startup configuration on next reboot"
+ action 2.0 cli command "config t"
+ action 2.1 cli command "system ignore startupconfig switch all"
+ action 3.0 reload
+event manager applet eem-labnet-prevention-script2
+ event cli pattern "erase startup-config" sync no skip yes
+ action 1.0 syslog msg "Attempting to delete startup-config - restoring default Lab-config"
+ action 2.0 cli command "enable"
+ action 2.1 cli command "copy nvram:default-config startup-config" pattern "startup-config"
+ action 2.2 cli command ""
+event manager applet eem-labnet-prevention-script3
+ event cli pattern "delete nvram:startup-config" sync no skip yes
+ action 1.0 syslog msg "Attempting to delete startup-config - restoring default Lab-config"
+ action 2.0 cli command "enable"
+ action 2.1 cli command "copy nvram:default-config startup-config" pattern "startup-config"
+ action 2.2 cli command ""
+event manager applet eem-labnet-prevention-script4
+ event cli pattern "write erase" sync no skip yes
+ action 1.0 syslog msg "Attempting to delete startup-config - restoring default Lab-config"
+ action 2.0 cli command "enable"
+ action 2.1 cli command "copy nvram:default-config startup-config" pattern "startup-config"
+ action 2.2 cli command ""
+event manager applet eem-labnet-prevention-script5
+ event cli pattern "delete nvram:default-config" sync no skip yes
+ action 1.0 puts "Attempting to delete default-config - Action blocked"
+ action 1.1 syslog priority notifications msg "Attempted to delete the nvram:default-config file - Action blocked"
+event manager applet eem-labnet-prevention-script6
+ event cli pattern "no username guardian" sync no skip yes
+ action 1.0 puts "Attempting to delete a scripting statement - Action blocked"
+ action 1.1 syslog priority notifications msg "Attempted to delete an scripting statement - Action blocked"
+event manager applet eem-labnet-prevention-script7
+ event cli pattern "no username lector" sync no skip yes
+ action 1.0 puts "Attempting to delete a scripting statement - Action blocked"
+ action 1.1 syslog priority notifications msg "Attempted to delete an scripting statement - Action blocked"
+event manager applet eem-labnet-prevention-script8
+ event syslog pattern "%SYS-5-RESTART: System restarted"
+ action 1.0 syslog msg "Procedure to prevent console lockout"
+ action 2.0 cli command "enable"
+ action 3.0 cli command "show file information nvram:startup-config"
+ action 3.1 set startup_config_output "$_cli_result"
+ action 4.0 regexp "%Error reading nvram:startup-config" "$startup_config_output"
+ action 4.1 if $_regexp_result eq ""
+ action 5.0  syslog msg "Startup-config found, console and enable defaults set"
+ action 5.1  cli command "config t"
+ action 5.2  cli command "no security passwords min-length"
+ action 5.3  cli command "enable secret secret"
+ action 5.4  cli command "line console 0"
+ action 5.5  cli command "password console"
+ action 5.6  cli command "login"
+ action 5.7  cli command "end"
+ action 5.8  cli command "wr"
+ action 6.0 else
+ action 6.1  syslog msg "No startup-config found, restoring default Lab-config"
+ action 6.2  cli command "copy nvram:default-config startup-config" pattern "startup-config"
+ action 6.3  cli command ""
+ action 7.0 end
+event manager applet eem-labnet-prevention-script9
+ event cli pattern "DeviceResetX" sync no skip yes
+ action 1.0 syslog msg "Procedure to restore default Lab-config!."
+ action 2.0 cli command "enable"
+ action 3.0 cli command "show file information flash:vlan.dat"
+ action 3.1 set vlan_dat_output "$_cli_result"
+ action 4.0 regexp "flash:vlan.dat:" "$vlan_dat_output"
+ action 4.1 if $_regexp_result eq ""
+ action 5.0  syslog msg "No vlan.dat found, restoring default Lab-config"
+ action 5.1  cli command ""
+ action 5.2  cli command "copy nvram:default-config startup-config" pattern "startup-config"
+ action 5.3  cli command ""
+ action 5.4  reload
+ action 6.0 else
+ action 6.1  syslog msg "vlan.dat found, restoring default Lab-config"
+ action 6.2  cli command "delete flash:vlan.dat" pattern "vlan.dat"
+ action 6.3  cli command "" pattern "vlan.dat"
+ action 6.4  cli command ""
+ action 6.5  cli command "copy nvram:default-config startup-config" pattern "startup-config"
+ action 6.6  cli command ""
+ action 6.7  reload
+ action 7.0 end
+event manager applet eem-labnet-prevention-script10
+ event cli pattern "no event manager applet eem-labnet" sync no skip yes
+ action 1.0 puts "Attempting to delete a scripting statement - Action blocked"
+ action 1.1 syslog priority notifications msg "Attempted to delete an scripting statement - Action blocked"
+!
+end
