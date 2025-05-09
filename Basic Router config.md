@@ -87,10 +87,5 @@ ip address 10.199.65.220 255.255.255.225
 no shut
 exit
 ```
-### RELAY
 
-```
-int gig 0/0/0.77
-ip helper-address 10.199.64.66
-```
 
