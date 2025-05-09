@@ -20,7 +20,8 @@ S1(config-if)# end
 ```
 S1(config)# interface 1/0/1
 S1(config-if)# switchport mode trunk
-S1(config-if)# switchport trunk allowed vlan 10,20,30,99
+S1(config-if)# switchport trunk allowed vlan 10,20,30,40
+S1(config-if)# switchport trunk native vlan 99
 S1(config-if)# end
 ```
 
