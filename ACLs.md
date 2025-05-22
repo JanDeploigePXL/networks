@@ -27,3 +27,10 @@ no 10
 end
 ```
 
+```
+configure terminal
+ip access-list extended allowssh
+permit tcp host 10.199.66.100 any eq 22
+permit tcp 10.199.67.0 0.0.0.255 10.10.10.0 0.0.0.255 eq 22
+
+```
