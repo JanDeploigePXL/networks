@@ -66,3 +66,21 @@ switchport mode access --> voor clients (computer)
 **Explanation:**  
 - Use trunk mode for uplinks between switches.  
 - Use access mode for end devices.
+
+---
+
+### Verify VLANs and Ports
+
+```
+S1# show vlan brief
+S1# show interfaces status
+S1# show interfaces trunk
+S1# show running-config interface [interface]
+S1# show port-security interface [interface]
+```
+**Explanation:**
+- `show vlan brief`: Lists all VLANs and assigned ports.
+- `show interfaces status`: Displays status of all switch interfaces.
+- `show interfaces trunk`: Shows trunk ports and allowed VLANs.
+- `show running-config interface [interface]`: Shows configuration for a specific interface.
+- `show port-security interface [interface]`: Displays port security status for an interface.

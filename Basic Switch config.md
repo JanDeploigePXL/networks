@@ -75,3 +75,19 @@ S1(config)# no ip domain-lookup
 ```
 **Explanation:**
 - `no ip domain-lookup`: Disables DNS lookup for mistyped commands.
+
+---
+
+### Verify Switch Configuration
+
+```
+S1# show running-config
+S1# show line
+S1# show users
+S1# show version
+```
+**Explanation:**
+- `show running-config`: Displays the current configuration.
+- `show line`: Shows line (console/VTY) status.
+- `show users`: Lists users currently connected.
+- `show version`: Displays switch software and hardware information.

@@ -11,3 +11,13 @@ R1(config)# ip route 0.0.0.0 0.0.0.0 10.199.65.100
 ```
 **Explanation:**
 - `ip route 0.0.0.0 0.0.0.0 10.199.65.100`: Configures a default static route to forward all unknown traffic to 10.199.65.100.
+
+### Verify Static Route
+
+```
+R1# show ip route
+R1# show running-config | include ip route
+```
+**Explanation:**
+- `show ip route`: Displays the routing table, including static and default routes.
+- `show running-config | include ip route`: Shows all static route commands in the configuration.

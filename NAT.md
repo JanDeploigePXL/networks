@@ -56,7 +56,9 @@ ip nat inside source list 1 interface GigabitEthernet0/1 overload
 ```
 show ip nat translations
 show ip nat statistics
+show running-config | include nat
 ```
 **Explanation:**
 - `show ip nat translations`: Displays current NAT translations.
 - `show ip nat statistics`: Shows NAT operation statistics.
+- `show running-config | include nat`: Shows NAT-related configuration lines.

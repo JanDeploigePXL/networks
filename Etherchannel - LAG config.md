@@ -60,3 +60,19 @@ S2(config-if)# switchport trunk allowed vlan 1,2,20
 **Explanation:**  
 - Both switches use the same EtherChannel group number and trunk settings.
 - The configuration must match on both sides for EtherChannel to form successfully.
+
+---
+
+### Verify EtherChannel
+
+```
+S1# show etherchannel summary
+S1# show interfaces port-channel 1
+S1# show running-config interface port-channel 1
+S1# show interfaces GigabitEthernet 1/0/1 etherchannel
+```
+**Explanation:**
+- `show etherchannel summary`: Displays EtherChannel status and group information.
+- `show interfaces port-channel 1`: Shows details for the logical port-channel interface.
+- `show running-config interface port-channel 1`: Shows configuration for the port-channel interface.
+- `show interfaces GigabitEthernet 1/0/1 etherchannel`: Shows EtherChannel information for a physical interface.

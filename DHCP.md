@@ -16,5 +16,19 @@ ip helper-address 10.199.64.66
 
 ---
 
+### Verify DHCP Relay
+
+```
+R1# show running-config interface gigabitEthernet 0/0/0.77
+R1# show ip interface gigabitEthernet 0/0/0.77
+R1# debug ip dhcp server packet
+```
+**Explanation:**
+- `show running-config interface ...`: Shows the configuration for the interface.
+- `show ip interface ...`: Displays interface status and helper addresses.
+- `debug ip dhcp server packet`: (Optional) Debugs DHCP packets for troubleshooting.
+
+---
+
 **Note:**  
 Yes, you need to configure `ip helper-address` on every interface (subnet) where you want DHCP clients to reach a remote DHCP server. Each subnet interface should have the appropriate `ip helper-address` command pointing to the DHCP server.

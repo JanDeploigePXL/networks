@@ -53,10 +53,18 @@ S1(config-if)# ipv6 address FE80::2 link-local
 ```
 S1# show ip interface brief
 S1# show ipv6 interface brief
+S1# show running-config interface vlan 99
+S1# show running-config | include ip default-gateway
+S1# show hosts
+S1# show ntp status
 ```
 **Explanation:**
 - `show ip interface brief`: Displays summary of IPv4 interfaces.
 - `show ipv6 interface brief`: Displays summary of IPv6 interfaces.
+- `show running-config interface vlan 99`: Shows the configuration for VLAN 99 interface.
+- `show running-config | include ip default-gateway`: Shows the configured default gateway.
+- `show hosts`: Displays DNS server configuration.
+- `show ntp status`: Shows NTP synchronization status.
 
 ---
 

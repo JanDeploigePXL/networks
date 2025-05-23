@@ -170,4 +170,26 @@ exit
 - `ip address ...`: Assigns an IP address.
 - `no shut`: Enables the interface.
 
+---
+
+### Verify Router Configuration
+
+```
+R1# show running-config
+R1# show interfaces
+R1# show ip interface brief
+R1# show ipv6 interface brief
+R1# show interfaces description
+R1# show interfaces loopback 0
+R1# show standby brief
+```
+**Explanation:**
+- `show running-config`: Displays the current configuration.
+- `show interfaces`: Shows detailed interface status.
+- `show ip interface brief`: Lists IPv4 interfaces and status.
+- `show ipv6 interface brief`: Lists IPv6 interfaces and status.
+- `show interfaces description`: Shows interface descriptions.
+- `show interfaces loopback 0`: Shows loopback interface details.
+- `show standby brief`: Displays HSRP status.
+
 

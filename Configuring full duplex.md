@@ -20,6 +20,16 @@ S1# copy running-config startup-config
 - `speed 100`: Sets the interface speed to 100 Mbps.
 - `copy running-config startup-config`: Saves the configuration.
 
+### Verify Duplex and Speed
+
+```
+S1# show interfaces status
+S1# show interfaces GigabitEthernet 1/0/1
+```
+**Explanation:**
+- `show interfaces status`: Displays status, speed, and duplex for all interfaces.
+- `show interfaces GigabitEthernet 1/0/1`: Shows detailed information for a specific interface, including duplex and speed.
+
 **About Duplex:**
 - **Duplex** refers to how data is transmitted and received on a network interface.
     - **Half duplex**: Data can be sent or received, but not both at the same time (like a walkie-talkie).

@@ -55,3 +55,17 @@ interface gigabitEthernet 0/1
 - R1 has a higher priority (110) and will be the active router.
 - R2 has a lower priority (100) and will be the standby router.
 - Both use `preempt` to allow a higher-priority router to take over if it comes online.
+
+---
+
+### Verify HSRP
+
+```
+R1# show standby
+R1# show standby brief
+R1# show running-config | include standby
+```
+**Explanation:**
+- `show standby`: Displays detailed HSRP status.
+- `show standby brief`: Shows a summary of HSRP groups and states.
+- `show running-config | include standby`: Shows HSRP configuration lines.
